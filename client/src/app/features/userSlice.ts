@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { CartStateType } from "../app/cartSlice";
-import type { RootState } from "./store";
+import type { RootState } from "../store";
 import axios from "axios";
 
 const USER_URL = "api/v1/users";
@@ -11,19 +10,19 @@ export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
 });
 
 export interface UserType {
+  fullName: string;
   userName: string;
   email: string;
   password: string;
-  carts: CartStateType[];
-  _id: string;
+  id: string;
 }
 
 const initUserState: UserType = {
+  fullName: "",
   userName: "",
   email: "",
   password: "",
-  carts: [],
-  _id: "",
+  id: "",
 };
 
 export const userSlice = createSlice({

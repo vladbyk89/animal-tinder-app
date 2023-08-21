@@ -3,7 +3,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
-import { fetchUser } from "./app/userSlice";
+import { fetchUser } from "./app/features/userSlice";
 
 store.dispatch(fetchUser());
 
