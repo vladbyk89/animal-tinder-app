@@ -3,11 +3,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 import mysql from "mysql";
 
-import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
 import cookieParser from 'cookie-parser';
 
 const password = process.env.MYSQL_PASSWORD;
+const database = process.env.MYSQL_DATABASE;
 
 //connet to db
 export const  connection = mysql.createConnection({
@@ -15,7 +16,7 @@ export const  connection = mysql.createConnection({
   port: 3306,
   user: 'root',
   password,
-  database: 'diary'
+  database
 });
 
 connection.connect( (error: any)=> {
