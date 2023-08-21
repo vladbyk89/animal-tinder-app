@@ -1,13 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
-import axios from "axios";
-
-const USER_URL = "api/v1/users";
-
-export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
-  const response = await axios.get(`${USER_URL}/getUser`);
-  return response.data.user;
-});
 
 export interface UserType {
   fullName: string;
@@ -35,12 +27,7 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.value = initUserState;
     },
-  },
-  extraReducers(builder) {
-    builder.addCase(fetchUser.fulfilled, (state, action) => {
-      state.value = action.payload;
-    });
-  },
+  }
 });
 
 export const { login, logout } = userSlice.actions;

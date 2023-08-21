@@ -6,10 +6,12 @@ import Missing from "./pages/Missing";
 import Register from "./pages/Register";
 import { NavLink } from "react-router-dom";
 
+import "./styles.scss";
+
 function App() {
   return (
     <main className="App">
-      <div style={{ display: "flex", gap: "2rem", padding:"2rem" }}>
+      <div style={{ display: "flex", gap: "2rem", padding: "2rem" }}>
         <NavLink to="/register">register</NavLink>
         <NavLink to="/login">login</NavLink>
         <NavLink to="/">home</NavLink>
