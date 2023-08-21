@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import App from "./App.tsx";
-// import Profile from "./pages/About.tsx";
+import ProfilPage from "./pages/ProfilPage.tsx";
 // import Register from "./pages/Register.tsx";
 // import Login from "./pages/Login.tsx";
 // import ErrorPage from "./pages/ErrorPage.tsx";
@@ -12,7 +12,7 @@ import App from "./App.tsx";
 export const router = ([
 <Routes>
   <Route key="home" path={"/"} element={<App />}/>,
-  {/* <Route key="profile" path="/about" element={<Profile />}/>, */}
+  <Route key="profile" path="/about" element={<ProfilPage />}/>,
   {/* <Route key="register" path="/register" element={<Register />}/>, */}
   {/* <Route key="login" path="/login" element={<Login />}/>, */}
   {/* <Route key="admin" path="/admin" element={<Admin />}/>, */}

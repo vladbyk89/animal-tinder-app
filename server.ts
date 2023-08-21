@@ -1,6 +1,6 @@
 import express from "express";
 const app = express();
-const PORT = process.env.PORT || 3000;
+
 import mysql from "mysql";
 
 import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
@@ -43,9 +43,9 @@ import usersRoutes from "./api/users/usersRoutes";
 app.use("/api/users", usersRoutes);
 
 //static file
-app.use(express.static("./client"));
+app.use(express.static("/client"));
 
 
-app.listen(PORT, () => {
-  console.log("server listen on port", PORT);
+app.listen(4000, () => {
+  console.log("server listen on port 4000");
 });
