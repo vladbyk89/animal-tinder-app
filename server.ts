@@ -1,6 +1,6 @@
 import express from "express";
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 import mysql from "mysql";
 import cookieParser from 'cookie-parser';
 
