@@ -2,20 +2,22 @@ import express from "express";
 const app = express();
 const PORT = process.env.PORT || 3000;
 import mysql from "mysql";
-
-import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-dotenv.config();
 import cookieParser from 'cookie-parser';
 
+import dotenv from "dotenv"; 
+
+dotenv.config();
+
 const password = process.env.MYSQL_PASSWORD;
+const database = process.env.MYSQL_DATABASE;
 
 //connet to db
 export const  connection = mysql.createConnection({
   host: 'localhost',
   port: 3306,
   user: 'root',
-  password: 'root123',
-  database: 'tinder'
+  password,
+  database
 });
 
 
