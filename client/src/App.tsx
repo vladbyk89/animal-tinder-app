@@ -15,6 +15,7 @@ function App() {
         <NavLink to="/register">register</NavLink>
         <NavLink to="/login">login</NavLink>
         <NavLink to="/">home</NavLink>
+        <NavLink to="/Profile">Profile</NavLink>
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
