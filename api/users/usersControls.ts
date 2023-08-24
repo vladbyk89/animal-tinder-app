@@ -22,21 +22,17 @@ export async function addUser(req: any, res: any) {
   try {
     const { fullName, email, userName, password } = req.body;
 
-    console.log(fullName, email, userName, password);
+    if (!fullName || !email || !userName || !password)
+      throw new Error("all fiels are required");
 
-    if (!email) throw new Error("name are required");
-
-    const query = `INSERT INTO users (FullName, Email, UserName, Password) VALUES (${fullName}, ${email}, ${userName}, ${password});`;
+    const query = `INSERT INTO users (FullName, Email, UserName, Password) VALUES ("${fullName}", "${email}", "${userName}", "${password}");`;
 
     connection.query(query, (error: any, result: any) => {
-      console.log(error);
       if (error) throw new Error("error in query");
 
-      console.log("query result", result);
-      res.send({ users: result });
+      res.send(result);
     });
   } catch (error: any) {
-    console.error(error);
     res.status(500).send({ error: error.message });
   }
 }
