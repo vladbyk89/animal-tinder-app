@@ -20,13 +20,13 @@ export async function getUsers(req: any, res: any) {
 
 export async function addUser(req: any, res: any) {
   try {
-    const { fullName, email, userName, password } = req.body;
+    const { fullName, email, userName, password, image } = req.body;
 
-    console.log(fullName, email, userName, password);
+    console.log(fullName, email, userName, password, image);
 
     if (!email) throw new Error("name are required");
 
-    const query = `INSERT INTO users (FullName, Email, UserName, Password) VALUES (${fullName}, ${email}, ${userName}, ${password});`;
+    const query = `INSERT INTO users (FullName, Email, UserName, Password, Image) VALUES (${fullName}, ${email}, ${userName}, ${password}, ${image});`;
 
     connection.query(query, (error: any, result: any) => {
       console.log(error);
@@ -64,7 +64,7 @@ export async function deleteUser(req: any, res: any) {
   try {
     const { id } = req.body;
 
-    const query = `DELETE FROM users WHERE user_id='${id}';`;
+    const query = `DELETE FROM users WHERE id='${id}';`;
     connection.query(query, (error: any, result: any) => {
       console.log(error);
       if (error) throw new Error("error in query");
