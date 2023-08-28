@@ -6,6 +6,7 @@ interface RegisterType {
   email: string;
   userName: string;
   password: string;
+  image: string;
 }
 
 export default function Register() {
@@ -64,6 +65,16 @@ export default function Register() {
           placeholder="********"
           required
           {...register("password")}
+        />
+      </label>
+      <label htmlFor="password">
+        Image:{" "}
+        <input
+          type="text"
+          id="image"
+          placeholder="ImageUrl"
+          required
+          {...register("image")}
         />
       </label>
       <button type="submit">Submit</button>

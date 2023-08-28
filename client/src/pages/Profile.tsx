@@ -1,10 +1,33 @@
+import { useEffect, useState } from "react";
 import "./style/profile.scss"
+import axios from "axios";
+
+
+interface User{
+  id: string,
+  FullName: string,
+  Email: string,
+  UserName: string,
+  Password: string,
+  Image: string
+
+}
 
 export default function Profile() {
 
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.get(`/api/users/get-users`);
+      const { users } = data;
+      setUsers(users);
+    })();
+  }, []);
 
   return (
 <div>
+{users.map((user, _id) => (
 	<div className="container">
 		<div className="box-profile">
 			<svg className="spider" viewBox="0 0 512 512" width="100">
@@ -13,9 +36,9 @@ export default function Profile() {
 			<svg className="menu" viewBox="0 0 448 512" width="100">
 				<path d="M12.83 352h262.34A12.82 12.82 0 0 0 288 339.17v-38.34A12.82 12.82 0 0 0 275.17 288H12.83A12.82 12.82 0 0 0 0 300.83v38.34A12.82 12.82 0 0 0 12.83 352zm0-256h262.34A12.82 12.82 0 0 0 288 83.17V44.83A12.82 12.82 0 0 0 275.17 32H12.83A12.82 12.82 0 0 0 0 44.83v38.34A12.82 12.82 0 0 0 12.83 96zM432 160H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0 256H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z" />
 			</svg>
-      <img src="https://img.freepik.com/free-photo/isolated-happy-smiling-dog-white-background-portrait-4_1562-693.jpg" alt="dog" />
-			<h3>Mark Hope</h3>
-			<p>Front Bark Development @ DogTreats, Home</p>
+      <img className="profile-pic" src={user.Image} alt="dog" />
+			<h3 key={user.id}>{user.FullName}</h3>
+			<p>{user.Email}</p>
 			<div className="social-media">
 				<svg viewBox="0 0 512 512" width="100">
   <path d="M48 32C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H48zm0 32h106c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H38c-3.3 0-6-2.7-6-6V80c0-8.8 7.2-16 16-16zm426 96H38c-3.3 0-6-2.7-6-6v-36c0-3.3 2.7-6 6-6h138l30.2-45.3c1.1-1.7 3-2.7 5-2.7H464c8.8 0 16 7.2 16 16v74c0 3.3-2.7 6-6 6zM256 424c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-208c-48.5 0-88 39.5-88 88s39.5 88 88 88 88-39.5 88-88-39.5-88-88-88zm-48 104c-8.8 0-16-7.2-16-16 0-35.3 28.7-64 64-64 8.8 0 16 7.2 16 16s-7.2 16-16 16c-17.6 0-32 14.4-32 32 0 8.8-7.2 16-16 16z" />
@@ -36,6 +59,7 @@ export default function Profile() {
 			</div>
 		</div>
 	</div>
+))}
 </div>
   )
 }

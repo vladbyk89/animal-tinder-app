@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3000;
 import mysql from "mysql";
 import cookieParser from 'cookie-parser';
 
-import dotenv from "dotenv"; 
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -12,7 +12,7 @@ const password = process.env.MYSQL_PASSWORD;
 const database = process.env.MYSQL_DATABASE;
 
 //connet to db
-export const  connection = mysql.createConnection({
+export const connection = mysql.createConnection({
   host: 'localhost',
   port: 3306,
   user: 'root',
@@ -23,7 +23,7 @@ export const  connection = mysql.createConnection({
 
 
 ///
-connection.connect( (error: any)=> {
+connection.connect((error: any) => {
   if (error) {
     console.log(error);
     console.log("MySQL connection error");
